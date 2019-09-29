@@ -1,0 +1,22 @@
+<h1>Student Profile</h1>
+<table>
+  <tr>
+    <th>Enrollment Number</th>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Branch</th>
+    <th>Batch</th>
+    <th>Contact</th>
+  </tr>
+  <tr>
+    <td><%=@student.enrollnumber%></td>
+    <td><%=@student.firstname%></td>
+    <td><%=@student.lastname%></td>
+    <td><%=@student.branch%></td>
+    <td><%=@student.batch%></td>
+    <td><%=@student.contact%></td>
+    <td><%= link_to 'Update your Profile', edit_student_path(@student)%></td>
+    <td><%= link_to 'Delete your Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}%></td>
+    <td><%= link_to 'Student Portal', students_path %></td>
+  </tr>
+</table>

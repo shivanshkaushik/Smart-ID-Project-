@@ -1,0 +1,37 @@
+<% if @student.errors.any?%>
+<h2>The following errors prevented the action from getting completed</h2>
+<ul>
+  <%@student.errors.full_messages.each do |msg|%>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end%>
+<%= form_for @student do |f| %>
+  <p>
+    <%= f.label :enrollmentnumber%> <br>
+    <%= f.text_field :enrollnumber%>
+  </p>
+  <p>
+    <%= f.label :firstname%> <br>
+    <%= f.text_field :firstname%>
+  </p>
+  <p>
+    <%= f.label :lastname%> <br>
+    <%= f.text_field :lastname%>
+  </p>
+  <p>
+    <%= f.label :branch%> <br>
+    <%= f.text_field :branch%>
+  </p>
+  <p>
+    <%= f.label :batch%> <br>
+    <%= f.text_field :batch%>
+  </p>
+  <p>
+    <%= f.label :contact%> <br>
+    <%= f.text_field :contact%>
+  </p>
+  <p>
+    <%= f.submit(@student.new_record? ? "Register" : "Update Account")%>
+  </p>
+<% end %>

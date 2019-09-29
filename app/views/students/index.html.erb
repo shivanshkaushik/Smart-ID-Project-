@@ -1,0 +1,25 @@
+<h1>All Students registered for Smart-ID</h1>
+<%= link_to 'Home', root_path %> | <%= link_to 'Register for Smart-ID', new_student_path %> | <%= link_to 'Smart-ID(Student)', user_path %>
+<table>
+  <tr>
+    <th>Enrollment Number</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Branch</th>
+    <th>Batch</th>
+    <th>Contact</th>
+  </tr>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%=student.enrollnumber%></td>
+      <td><%=student.firstname%></td>
+      <td><%=student.lastname%></td>
+      <td><%=student.branch%></td>
+      <td><%=student.batch%></td>
+      <td><%=student.contact%></td>
+      <td><%=link_to 'Edit', edit_student_path(student)%></td>
+      <td><%=link_to 'Show', student_path(student)%></td>
+      <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}%></td>
+    </tr>
+  <% end %>
+</table>
