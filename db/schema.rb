@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_29_061845) do
+ActiveRecord::Schema.define(version: 2019_09_30_144249) do
 
   create_table "students", force: :cascade do |t|
     t.integer "enrollnumber"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_09_29_061845) do
     t.integer "contact"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "password_digest"
   end
 
 end

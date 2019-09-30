@@ -1,5 +1,7 @@
 class StudentsController < ApplicationController
+
   before_action :set_student, only: [:edit, :update, :show, :destroy]
+
   def index
     @students = Student.all
   end
@@ -39,8 +41,9 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
   private
+
     def student_params
-      params.require(:student).permit(:enrollnumber, :firstname, :lastname, :branch, :batch, :contact)
+      params.require(:student).permit(:enrollnumber, :firstname, :lastname, :branch, :batch, :contact, :email, :password)
     end
 
     def set_student
