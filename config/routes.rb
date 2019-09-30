@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   get 'management', to: 'welcome#adminportal'
   resources :students
 
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+
 
 end
