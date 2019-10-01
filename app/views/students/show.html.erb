@@ -16,8 +16,10 @@
     <td><%=@student.branch%></td>
     <td><%=@student.batch%></td>
     <td><%=@student.contact%></td>
-    <td><%= link_to 'Update your Profile', edit_student_path(@student)%></td>
-    <td><%= link_to 'Delete your Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}%></td>
+    <% if logged_in? && current_student.enrollnumber == @student.enrollnumber%>
+      <td><%= link_to 'Update your Profile', edit_student_path(@student)%></td>
+      <td><%= link_to 'Delete your Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}%></td>
+    <%  end %>
     <td><%= link_to 'Student Portal', students_path %></td>
   </tr>
 </table>

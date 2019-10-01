@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
 
   before_action :set_student, only: [:edit, :update, :show, :destroy]
+  before_action :require_same_student, only: [:edit, :update, :destroy]
 
   def index
     @students = Student.all
@@ -40,6 +41,7 @@ class StudentsController < ApplicationController
     flash[:danger] = "Student profile was succesfully deleted."
     redirect_to students_path
   end
+
   private
 
     def student_params
@@ -48,5 +50,12 @@ class StudentsController < ApplicationController
 
     def set_student
       @student = Student.find(params[:id])
+    end
+
+    def require_same_student
+      if current_student.enrollnumber != @student.enrollnumber
+        flash[:danger] = "You can only edit or update your profile"
+        redirect_to root_path
+      end
     end
 end
