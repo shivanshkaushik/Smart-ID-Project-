@@ -1,1 +1,17 @@
 @import '~bootstrap/scss/bootstrap';
+
+.logo{
+    font-size: 1.7em;
+    float: left;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-weight: bold;
+}
+.jumbotron
+{
+    text-align: center;
+}
+.title{
+    font-size: 5em;
+    font-color: #66b3ff;
+}
