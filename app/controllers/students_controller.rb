@@ -38,6 +38,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+    session[:user_id] = nil
     @student.destroy
     flash[:danger] = "Student profile was succesfully deleted."
     redirect_to students_path
