@@ -1,0 +1,27 @@
+<h1> Showing Selected Faculty</h1>
+
+<p>
+  Firstname: <%= @faculty.firstname%>
+</p>
+
+<p>
+  Last Name: <%= @faculty.lastname%>
+</p>
+
+<p>
+  Specialization: <%= @faculty.teaching_field%>
+</p>
+
+<p>
+  Designation: <%= @faculty.designation%>
+</p>
+
+<p>
+  E-Mail: <%= @faculty.email%>
+</p>
+
+<p>
+  Contact: <%= @faculty.contact%>
+</p>
+
+<%= link_to "Edit this Faculty", edit_faculty_path(@faculty)%> | <%= link_to "Back To Faculties listing", faculties_path%>
