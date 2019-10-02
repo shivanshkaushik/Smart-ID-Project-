@@ -39,7 +39,7 @@ class StudentsController < ApplicationController
   def destroy
     @student.destroy
     flash[:danger] = "Student profile was succesfully deleted."
-    redirect_to students_path
+    redirect_to student_path
   end
 
   private
