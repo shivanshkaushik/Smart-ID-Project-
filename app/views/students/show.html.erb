@@ -14,7 +14,7 @@
   <tbody>
   <tr>
     <td><%= gravatar_for @student, size: 100 %></td>
-    <td><%=@student.enrollnumber%></td>
+    <td><%=@student.enrollnumber.to_s.rjust(11,'0')%></td>
     <td><%=@student.firstname%></td>
     <td><%=@student.lastname%></td>
     <td><%=@student.branch%></td>
