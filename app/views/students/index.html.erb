@@ -24,7 +24,7 @@
   <% @students.each do |student| %>
     <tr>
       <td><%= gravatar_for student, size: 100 %></td>
-      <td><%=student.enrollnumber%></td>
+      <td><%=student.enrollnumber.to_s.rjust(11,'0')%></td>
       <td><%=student.firstname%></td>
       <td><%=student.lastname%></td>
       <td><%=student.branch%></td>
@@ -35,7 +35,7 @@
         <td><%=link_to 'Edit', edit_student_path(student), class: "btn btn-secondary"%></td>
         <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
       <% end %>  
-
+      <td><%=link_to 'Show', student_path(student)%></td>
     </tr>
   <% end %>
   </tbody>
