@@ -1,14 +1,24 @@
-<h1>All Students registered for Smart-ID</h1>
-<%= link_to 'Home', root_path %> | <%= link_to 'Register for Smart-ID', new_student_path %> | <%= link_to 'Smart-ID(Student)', user_path %>
-<table>
+<h1 align="center">All Students registered for Smart-ID</h1>
+<% if logged_in? %>
+<div class="hd">
+<%= link_to 'Smart-ID(Student)', user_path %>
+</div>
+<% else %>
+<%= link_to 'Register for Smart-ID', new_student_path, class: "hd" %> | <%= link_to 'Smart-ID(Student)', user_path %>
+<% end %>
+<table class="table">
+  <thead>
   <tr>
-    <th>Enrollment Number</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Branch</th>
-    <th>Batch</th>
-    <th>Contact</th>
+    <th scope="col"> </th>
+    <th scope="col">Enrollment Number</th>
+    <th scope="col">First Name</th>
+    <th scope="col">Last Name</th>
+    <th scope="col">Branch</th>
+    <th scope="col">Batch</th>
+    <th scope="col">Contact</th>
   </tr>
+  </thead>
+  <tbody>
   <% @students.each do |student| %>
     <tr>
       <td><%= gravatar_for student, size: 150 %></td>
@@ -25,4 +35,5 @@
       <td><%=link_to 'Show', student_path(student)%></td>
     </tr>
   <% end %>
+  </tbody>
 </table>

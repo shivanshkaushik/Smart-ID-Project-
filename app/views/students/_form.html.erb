@@ -1,45 +1,72 @@
 <% if @student.errors.any?%>
-<h2>The following errors prevented the action from getting completed</h2>
+
+    <div class= "alert alert-danger", role= "alert">
+        <h2 class= "alert-heading">
+          <%= pluralize(@student.errors.count, "error") %>
+          prevented action from getting completed
+          </h2>
 <ul>
   <%@student.errors.full_messages.each do |msg|%>
     <li><%= msg %></li>
   <% end %>
 </ul>
+</div>
+</div>
 <% end%>
-<%= form_for @student do |f| %>
-  <p>
-    <%= f.label :enrollmentnumber%> <br>
-    <%= f.text_field :enrollnumber%>
-  </p>
-  <p>
-    <%= f.label :firstname%> <br>
-    <%= f.text_field :firstname%>
-  </p>
-  <p>
-    <%= f.label :lastname%> <br>
-    <%= f.text_field :lastname%>
-  </p>
-  <p>
-    <%= f.label :branch%> <br>
-    <%= f.text_field :branch%>
-  </p>
-  <p>
-    <%= f.label :batch%> <br>
-    <%= f.text_field :batch%>
-  </p>
-  <p>
-    <%= f.label :contact%> <br>
-    <%= f.text_field :contact%>
-  </p>
-  <p>
-    <%= f.label :email%> <br>
-    <%= f.email_field :email%>
-  </p>
-  <p>
-    <%= f.label :password%> <br>
-    <%= f.password_field :password%>
-  </p>
-  <p>
-    <%= f.submit(@student.new_record? ? "Register" : "Update Account")%>
-  </p>
+<div class="jumbotron">
+
+<%= form_for(@student, :html => {class: "horizontal", role: "form"}) do |f| %>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :"Enrollment Number"%>
+    </div>
+
+    <%= f.text_field :enrollnumber, class: "form-control", placeholder: "Enter your Enrollment Number", autofocus: true %>
+</div>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :"First Name"%>
+        </div>
+
+    <%= f.text_field :firstname, class: "form-control", placeholder: "Enter your First Name", autofocus: true%>
+</div>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :"Last Name"%>
+        </div>
+    <%= f.text_field :lastname, class: "form-control", placeholder: "Enter your Last Name", autofocus: true%>
+</div>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :Branch%>
+        </div>
+    <%= f.text_field :branch, class: "form-control", placeholder: "Enter your Branch", autofocus: true%>
+</div>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :Batch%>
+        </div>
+    <%= f.text_field :batch, class: "form-control", placeholder: "Enter your Batch", autofocus: true%>
+</div>
+<div class= "form-group">
+  <div class= "control-label
+    <%= f.label :Contact%>
+        </div>
+    <%= f.text_field :contact, class: "form-control", placeholder: "Enter your Contact Number", autofocus: true%>
+</div>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :email%>
+        </div>
+    <%= f.email_field :email, class: "form-control", placeholder: "Enter your Email Address", autofocus: true%>
+</div>
+<div class="form-group">
+  <div class= "control-label">
+    <%= f.label :password%>
+        </div>
+    <%= f.password_field :password, class: "form-control", placeholder: "Enter Password", autofocus: true%>
+</div>
+<br>
+    <%= f.submit(@student.new_record? ? "Register" : "Update Account", class:"btn btn-lg btn-primary but")%>
 <% end %>
+</div>

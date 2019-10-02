@@ -1,13 +1,17 @@
 <h1>Student Profile</h1>
-<table>
+<table class="table">
+  <thead>
   <tr>
-    <th>Enrollment Number</th>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Branch</th>
-    <th>Batch</th>
-    <th>Contact</th>
+    <th scope="col"> </th>
+    <th scope="col">Enrollment Number</th>
+    <th scope="col">First name</th>
+    <th scope="col">Last name</th>
+    <th scope="col">Branch</th>
+    <th scope="col">Batch</th>
+    <th scope="col">Contact</th>
   </tr>
+  </thead>
+  <tbody>
   <tr>
     <td><%= gravatar_for @student, size: 150 %></td>
     <td><%=@student.enrollnumber%></td>
@@ -22,4 +26,5 @@
     <%  end %>
     <td><%= link_to 'Student Portal', students_path %></td>
   </tr>
+  </tbody>
 </table>
