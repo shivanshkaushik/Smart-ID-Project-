@@ -14,7 +14,7 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      flash[:notice] = "Welcome #{@student.firstname}, to the Smart-ID portal"
+      flash[:primary] = "Welcome #{@student.firstname}, to the Smart-ID portal"
       redirect_to student_path(@student)
     else
       render 'new'

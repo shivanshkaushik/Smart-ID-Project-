@@ -4,7 +4,7 @@ module ApplicationHelper
     gravatar_id = Digest::MD5::hexdigest(student.firstname.downcase)
     size = options[:size]
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: student.firstname, class: "img-circle")
+    image_tag(gravatar_url, alt: student.firstname, style:'border-radius:50%;')
   end
 
 end

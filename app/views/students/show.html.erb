@@ -13,7 +13,7 @@
   </thead>
   <tbody>
   <tr>
-    <td><%= gravatar_for @student, size: 150 %></td>
+    <td><%= gravatar_for @student, size: 100 %></td>
     <td><%=@student.enrollnumber%></td>
     <td><%=@student.firstname%></td>
     <td><%=@student.lastname%></td>
@@ -21,10 +21,10 @@
     <td><%=@student.batch%></td>
     <td><%=@student.contact%></td>
     <% if logged_in? && current_student.enrollnumber == @student.enrollnumber%>
-      <td><%= link_to 'Update your Profile', edit_student_path(@student)%></td>
-      <td><%= link_to 'Delete your Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}%></td>
+      <td><%= link_to 'Update Profile', edit_student_path(@student), class: "btn btn-primary"%></td>
+      <td><%= link_to 'Delete Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-danger"%></td>
     <%  end %>
-    <td><%= link_to 'Student Portal', students_path %></td>
+    <td><%= link_to 'Student Portal', students_path, class: "btn btn-info" %></td>
   </tr>
   </tbody>
 </table>
