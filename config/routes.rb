@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'about', to: 'welcome#about'
   get 'user', to: 'welcome#studentportal'
-  get 'teacher', to: 'welcome#facultyportal'
+  get 'teacher', to: 'faculties#index'
   get 'management', to: 'welcome#adminportal'
   resources :students
 
