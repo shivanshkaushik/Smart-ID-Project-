@@ -10,10 +10,6 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-<<<<<<< HEAD
-end
-=======
 
   resources :faculties
 end
->>>>>>> 26bfa0dc59fc9eb9f9a3bb8db70de8d571e2c8f0

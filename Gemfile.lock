@@ -120,11 +120,8 @@ GEM
     nokogiri (1.10.4-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     pg (1.1.4)
-<<<<<<< HEAD
-    popper_js (1.14.5)
-=======
     pg (1.1.4-x64-mingw32)
->>>>>>> 26bfa0dc59fc9eb9f9a3bb8db70de8d571e2c8f0
+    popper_js (1.14.5)
     public_suffix (4.0.1)
     puma (3.12.1)
     rack (2.0.7)
