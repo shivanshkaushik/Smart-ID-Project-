@@ -13,12 +13,13 @@
   </thead>
   <tbody>
   <tr>
-<td>Firstname: <%= @faculty.firstname%></td>
-<td>Last Name: <%= @faculty.lastname%></td>
-<td>Specialization: <%= @faculty.teaching_field%></td>
-<td>Designation: <%= @faculty.designation%></td>
-<td>E-Mail: <%= @faculty.email%></td>
-<td>Contact: <%= @faculty.contact%></td>
+    <td></td>
+<td><%= @faculty.firstname%></td>
+<td><%= @faculty.lastname%></td>
+<td><%= @faculty.teaching_field%></td>
+<td><%= @faculty.designation%></td>
+<td><%= @faculty.email%></td>
+<td><%= @faculty.contact%></td>
 
 <%= link_to "Edit this Faculty", edit_faculty_path(@faculty)%> | <%= link_to "Back To Faculties listing", faculties_path%>
   </tr>
