@@ -33,7 +33,7 @@ config.hosts << "08fa2a814c844f3ba359f0f528bbb21e.vfs.cloud9.us-east-2.amazonaws
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
 
@@ -60,4 +60,22 @@ config.hosts << "08fa2a814c844f3ba359f0f528bbb21e.vfs.cloud9.us-east-2.amazonaws
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+
+
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "example.com",
+      authentication: "plain",
+      enable_starttls_auto: true,
+      user_name: ENV["GMAIL_USERNAME"],
+      password: ENV["GMAIL_PASSWORD"]
+    }
+
+    config.action_mailer.default_url_options = {host: "localhost:3001"}
 end

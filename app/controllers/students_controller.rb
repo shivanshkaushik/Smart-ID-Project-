@@ -14,9 +14,10 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      session[:user_id] = @student.id
-      flash[:primary] = "Welcome #{@student.firstname}, to the Smart-ID portal"
-      redirect_to student_path(@student)
+      # session[:user_id] = @student.id
+      UserMailer.registration_confirmation(@student).deliver
+      flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
+      redirect_to root_path
     else
       render 'new'
     end
@@ -44,6 +45,19 @@ class StudentsController < ApplicationController
     redirect_to students_path
   end
 
+  def confirm_email
+    student = Student.find_by_confirm_token(params[:id])
+    if student
+      student.email_activate
+      flash[:success] = "Welcome to the Student Portal! Your email has been confirmed.
+      Please sign in to continue."
+      redirect_to login_path
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_path
+    end
+  end
+
   private
 
     def student_params
@@ -60,4 +74,5 @@ class StudentsController < ApplicationController
         redirect_to root_path
       end
     end
+
 end

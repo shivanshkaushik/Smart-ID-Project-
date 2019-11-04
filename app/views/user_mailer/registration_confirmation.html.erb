@@ -1,0 +1,8 @@
+<h1>Hi <%=@student.firstname%>, welcome to the Smart-ID portal</h1>
+
+<p>
+  Thanks for registering! To confirm your registration click the URL below.
+</p>
+<p>
+  <%= confirm_email_student_url(@student.confirm_token) %>
+</p>

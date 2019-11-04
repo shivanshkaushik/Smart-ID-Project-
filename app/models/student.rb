@@ -1,5 +1,6 @@
 class Student < ApplicationRecord
 
+  before_create :confirmation_token
   before_save {self.email = email.downcase}
 
   NUMBER_REGEX = /\A\d+\z/
@@ -31,5 +32,18 @@ class Student < ApplicationRecord
             format: {with: VALID_EMAIL_REGEX, message: "Enter a valid email address"}
 
 
-  has_secure_password          
+  has_secure_password
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!
+  end
+
+private
+    def confirmation_token
+      if self.confirm_token.blank?
+          self.confirm_token = SecureRandom.urlsafe_base64.to_s
+      end
+    end
 end
