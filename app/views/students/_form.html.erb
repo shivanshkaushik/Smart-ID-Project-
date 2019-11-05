@@ -1,18 +1,5 @@
-<% if @student.errors.any?%>
+<%= render 'shared/errors', obj: @student%>
 
-    <div class= "alert alert-danger", role= "alert">
-        <h2 class= "alert-heading">
-          <%= pluralize(@student.errors.count, "error") %>
-          prevented action from getting completed
-          </h2>
-<ul>
-  <%@student.errors.full_messages.each do |msg|%>
-    <li><%= msg %></li>
-  <% end %>
-</ul>
-</div>
-</div>
-<% end%>
 <div class="jumbotron">
 
 <%= form_for(@student, :html => {class: "horizontal", role: "form"}) do |f| %>
@@ -60,12 +47,14 @@
         </div>
     <%= f.email_field :email, class: "form-control", placeholder: "Enter your Email Address", autofocus: true%>
 </div>
+<% if !student_logged_in? %>
 <div class="form-group">
   <div class= "control-label">
     <%= f.label :password%>
         </div>
     <%= f.password_field :password, class: "form-control", placeholder: "Enter Password", autofocus: true%>
 </div>
+<% end %>
 <br>
     <%= f.submit(@student.new_record? ? "Register" : "Update Account", class:"btn btn-lg btn-primary but")%>
 <% end %>

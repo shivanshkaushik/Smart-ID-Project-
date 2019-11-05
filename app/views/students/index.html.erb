@@ -1,13 +1,4 @@
 <h1 align="center">All Students registered for Smart-ID</h1>
-<% if logged_in? %>
-<div class="hd">
-<%= link_to 'Smart-ID(Student)', user_path %>
-</div>
-<% else %>
-<div class="hd">
-<%= link_to 'Register for Smart-ID', new_student_path, class: "hd" %> | <%= link_to 'Smart-ID(Student)', user_path %>
-</div>
-<% end %>
 <table class="table">
   <thead>
   <tr>
@@ -31,7 +22,7 @@
       <td><%=student.batch%></td>
       <td><%=student.contact%></td>
             <td><%=link_to 'Show', student_path(student), class: "btn btn-primary"%></td>
-      <% if logged_in? && current_student.enrollnumber == student.enrollnumber%>
+      <% if student_logged_in? && current_student.enrollnumber == student.enrollnumber%>
         <td><%=link_to 'Edit', edit_student_path(student), class: "btn btn-secondary"%></td>
         <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
       <% end %>  

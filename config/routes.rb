@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root 'welcome#home'
   get 'about', to: 'welcome#about'
   get 'user', to: 'welcome#studentportal'
-  get 'teacher', to: 'faculties#index'
   get 'management', to: 'welcome#adminportal'
+  get 'teacher', to: 'welcome#facultyportal'
   resources :students
 
   resources :students do
@@ -13,9 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'login', to: 'sessions#new'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  get 'student_login', to: 'student_sessions#new'
+  post 'student_login', to: 'student_sessions#create'
+  delete 'student_logout', to: 'student_sessions#destroy'
+
+  get 'faculty_login', to: 'faculty_sessions#new'
+  post 'faculty_login', to: 'faculty_sessions#create'
+  delete 'faculty_logout', to: 'faculty_sessions#destroy'
 
   resources :faculties
 end

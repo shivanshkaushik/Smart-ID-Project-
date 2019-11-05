@@ -20,9 +20,9 @@
     <td><%=@student.branch%></td>
     <td><%=@student.batch%></td>
     <td><%=@student.contact%></td>
-    <% if logged_in? && current_student.enrollnumber == @student.enrollnumber%>
+    <% if student_logged_in? && current_student== @student%>
       <td><%= link_to 'Update Profile', edit_student_path(@student), class: "btn btn-primary"%></td>
-      <td><%= link_to 'Delete Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-danger"%></td>
+      <!--<td><%= link_to 'Delete Profile', student_path(@student), method: :delete, data: {confirm: "Are your sure?"}, class: "btn btn-danger"%></td>-->
     <%  end %>
     <td><%= link_to 'Student Portal', students_path, class: "btn btn-info" %></td>
   </tr>

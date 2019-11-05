@@ -1,6 +1,12 @@
-<% if logged_in? %>
-  <%= link_to 'Logout', logout_path, method: :delete %>
+<% if student_logged_in? %>
+  <%= link_to 'Logout', student_logout_path, method: :delete %>
 <% else %>
-  <%= link_to 'Login', login_path%> |
-  <%= link_to 'Signup', new_student_path%>
+  <%= link_to 'Login as Student', student_login_path%> |
+  <%= link_to 'Signup as Student', new_student_path%>
 <% end %>
+
+<% if faculty_logged_in? %>
+  <%= link_to 'Logout', faculty_logout_path, method: :delete %>
+<% else%>
+  <%= link_to 'Login as Faculty', faculty_login_path%>
+  <%= link_to 'Sign up as Faculty', new_faculty_path %>

@@ -16,4 +16,6 @@ class Faculty < ApplicationRecord
             format: {with: NUMBER_REGEX, message: "Only numbers should be entered in the specified field"}
 
   validates :designation, presence: true
+
+  has_secure_password
 end

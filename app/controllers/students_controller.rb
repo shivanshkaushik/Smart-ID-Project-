@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
 
   before_action :set_student, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, only: [:edit, :update, :index, :destroy, :show]
   before_action :require_same_student, only: [:edit, :update, :destroy]
 
   def index
@@ -14,10 +15,11 @@ class StudentsController < ApplicationController
   def create
     @student = Student.new(student_params)
     if @student.save
-      # session[:user_id] = @student.id
-      UserMailer.registration_confirmation(@student).deliver
-      flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
-      redirect_to root_path
+      session[:student_id] = @student.id
+      #UserMailer.registration_confirmation(@student).deliver
+      #flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
+      flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
+      redirect_to student_path(@student)
     else
       render 'new'
     end
@@ -39,7 +41,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:student_id] = nil
     @student.destroy
     flash[:danger] = "Student profile was succesfully deleted."
     redirect_to students_path
@@ -69,7 +71,7 @@ class StudentsController < ApplicationController
     end
 
     def require_same_student
-      if current_student.enrollnumber != @student.enrollnumber
+      if current_student != @student
         flash[:danger] = "You can only edit or update your profile"
         redirect_to root_path
       end
