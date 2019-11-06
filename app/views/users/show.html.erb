@@ -1,0 +1,18 @@
+<h1 align = "center">Your Smart-ID Profile</h1><br>
+
+<div align = "center">
+  <%= gravatar_for @student , size: 100%> <br>
+  <strong>0<%= @student.enrollnumber%></strong>
+</div>
+<br> <br>
+<div align = "center">
+<p><strong>Details</strong></p>
+<p>Firstname:<%= @student.firstname%></p>
+<p>Lastname:<%= @student.lastname%></p>
+<p>Branch: <%= @student.branch%></p>
+<p>Batch: <%= @student.batch%></p>
+</div>
+
+<div align = "center">
+  <p><strong>Smart-ID Data</strong></p>
+</div>
