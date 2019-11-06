@@ -15,4 +15,18 @@
 
 <div align = "center">
   <p><strong>Smart-ID Data</strong></p>
+  <table style = "border: 1px solid black">
+    <tr style = "border: 1px solid black">
+      <th>User ID</th>
+      <th>Balance</th>
+      <th>Last Transaction</th>
+      <th>Dues</th>
+    </tr>
+    <tr style = "border: 1px solid black">
+      <td><%= @id.user_id%></td>
+      <td><%= @id.balance%></td>
+      <td><%= @id.last_transaction%></td>
+      <td><%= @id.dues%></td>
+    </tr>
+  </table>
 </div>

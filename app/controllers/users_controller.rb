@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     redirect_to root_path if !logged_in?
+    @id = Smartid.find_by(:user_id => @student.enrollnumber)
   end
 
 
