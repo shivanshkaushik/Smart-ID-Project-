@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   post 'faculty_login', to: 'faculty_sessions#create'
   delete 'faculty_logout', to: 'faculty_sessions#destroy'
 
+  get 'admin_login', to: 'admin_sessions#new'
+  post 'admin_login', to: 'admin_sessions#create'
+  delete 'admin_logout', to: 'admin_sessions#destroy'
+
   resources :faculties
 end

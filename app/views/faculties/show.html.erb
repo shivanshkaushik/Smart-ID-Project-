@@ -9,5 +9,12 @@
     <p>Designation: <%= @faculty.designation%></p>
     <p>E-mail: <%= @faculty.email%></p>
     <p>Contact: <%= @faculty.contact%></p>
+
+
+    <%= link_to "Delete", faculty_path(@faculty), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger", align: "center" if admin_logged_in?%> 
+    <%= link_to "Edit", edit_faculty_path(@faculty), class: "btn btn-secondary" if admin_logged_in?%>
+    <br/>
+    <br/>
+    <%= link_to "Faculties", faculties_path, class: "btn btn-primary", align: "center"%>
   </div>
 </div>

@@ -2,7 +2,7 @@
 <div class="jumbotron cent">
 <h1 class="text-primary title">SMART-ID</h1>
 <% if logged_in? %>
-  <%= link_to 'Students', students_path, class: "btn btn-primary btn-lg" %> | <%= link_to 'Faculty', faculties_path, class: "btn btn-primary btn-lg" %> | <%= link_to 'Admin', management_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to 'Students', students_path, class: "btn btn-primary btn-lg" %> | <%= link_to 'Faculty', faculties_path, class: "btn btn-primary btn-lg" %>
 <% else %>
     <span>
       <a class="dropdown-toggle btn btn-primary btn-lg" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -22,7 +22,7 @@
         <%= link_to 'As Student', student_login_path, class: "dropdown-item" %>
         <%= link_to 'As Faculty', faculty_login_path, class: "dropdown-item" %>
         <div class="dropdown-divider"></div>
-        <%= link_to 'Admin', management_path, class: "dropdown-item" %>
+        <%= link_to 'Admin', admin_login_path, class: "dropdown-item" %>
       </div>
     </span>
 <% end %>

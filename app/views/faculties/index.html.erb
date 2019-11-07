@@ -11,8 +11,9 @@
   <tr>
     <td><%= link_to (gravatar_for f), faculty_path(f)%></td>
     <td><%= link_to (f.firstname+" "+f.lastname), faculty_path(f)%></td>
-    <% if faculty_logged_in? && current_faculty==f%>
-    <td><%= link_to "Edit", edit_faculty_path(f), class: "btn btn-primary"%>
+    <% if admin_logged_in?%>
+    <td><%= link_to "Edit", edit_faculty_path(f), class: "btn btn-primary"%></td>
+    <td><%=link_to 'Delete', faculty_path(f), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
     <% end %>
   </tr>
   <% end %>

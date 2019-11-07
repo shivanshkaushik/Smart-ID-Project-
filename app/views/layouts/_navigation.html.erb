@@ -23,23 +23,29 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <em><b><%= student_logged_in? ? current_student.firstname+" "+current_student.lastname : current_faculty.firstname+" "+current_faculty.lastname%></b></em>
+          <% if student_logged_in? %>
+            <em><b><%= current_student.firstname+" "+current_student.lastname %>(Student)</b></em>
+          <% elsif faculty_logged_in? %>
+            <em><b><%= current_faculty.firstname+" "+current_faculty.lastname + "(#{current_faculty.designation})"%></b></em>          
+          <% else %>
+            <em><b><%= current_admin.firstname+" "+current_admin.lastname %> (Admin)</b></em>         
+           <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% if student_logged_in? %>
             <%= link_to 'Edit Your Profile', edit_student_path(current_student), class: "dropdown-item" %>
             <%= link_to 'View Your profile', student_path(current_student), class: "dropdown-item" %>
             <%= link_to "Logout", student_logout_path, method: :delete, class: "dropdown-item" %>
-          <% else %>
+          <% elsif faculty_logged_in? %>
             <%= link_to 'Edit Your Profile', edit_faculty_path(current_faculty), class: "dropdown-item" %>
             <%= link_to 'View Your profile', faculty_path(current_faculty), class: "dropdown-item" %>
             <%= link_to "Logout", faculty_logout_path, method: :delete, class: "dropdown-item" %>
+          <% else %>
+            <%= link_to "Logout (Admin)", admin_logout_path, method: :delete, class: "dropdown-item" %>
           <% end %> 
         </div> 
       </li>
     </ul>
     <% end %>
-      </li>
-    </ul>
   </div>
 </nav>
