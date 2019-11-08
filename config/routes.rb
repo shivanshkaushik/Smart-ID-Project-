@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   get 'teacher', to: 'welcome#facultyportal'
 
   # get 'user', to: 'users#studentportal'
-  get 'teacher', to: 'faculties#index'
-  get 'management', to: 'welcome#adminportal'
+  # get 'teacher', to: 'faculties#index'
+  # get 'management', to: 'welcome#adminportal'
 
-  resources :users, only: [:show]
+  resources :users
 
 
   resources :students

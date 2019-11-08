@@ -11,7 +11,7 @@
           Portal
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'Student', user_path, class: "dropdown-item" %>
+          <%= link_to 'Student', students_path, class: "dropdown-item" %>
         <%= link_to 'Faculty', teacher_path, class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
           <%= link_to 'Admin', management_path, class: "dropdown-item" %>
@@ -26,9 +26,9 @@
           <% if student_logged_in? %>
             <em><b><%= current_student.firstname+" "+current_student.lastname %>(Student)</b></em>
           <% elsif faculty_logged_in? %>
-            <em><b><%= current_faculty.firstname+" "+current_faculty.lastname + "(#{current_faculty.designation})"%></b></em>          
+            <em><b><%= current_faculty.firstname+" "+current_faculty.lastname + "(#{current_faculty.designation})"%></b></em>
           <% else %>
-            <em><b><%= current_admin.firstname+" "+current_admin.lastname %> (Admin)</b></em>         
+            <em><b><%= current_admin.firstname+" "+current_admin.lastname %> (Admin)</b></em>
            <% end %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,8 +42,8 @@
             <%= link_to "Logout", faculty_logout_path, method: :delete, class: "dropdown-item" %>
           <% else %>
             <%= link_to "Logout (Admin)", admin_logout_path, method: :delete, class: "dropdown-item" %>
-          <% end %> 
-        </div> 
+          <% end %>
+        </div>
       </li>
     </ul>
     <% end %>
