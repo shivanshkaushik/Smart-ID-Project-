@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_student
+  before_action :require_user
   before_action :set_student, only: [:show]
   before_action :check_smart_id_registration, only: [:show]
   before_action :require_same_student, only: [:show]

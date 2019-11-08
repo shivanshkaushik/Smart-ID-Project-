@@ -9,9 +9,10 @@ class Smartid < ApplicationRecord
   validates :last_transaction, presence: true
   validates :dues, presence: true
   validates :registration_number, presence: true,
+            uniqueness: true,
             length: {mimumum:9, maximum: 11, message: "Enter a valid enrollment number(9-11 digits only) or,Enter the number without any leading zeroes"},
             format: {with: NUMBER_REGEX, message: ": Only numbers should be entered in specicfied fields"}
-  validates :student_id, presence:
+  validates :student_id, presence: true
 
   def set_defaults
     self.balance ||= 0.0

@@ -19,7 +19,7 @@
       <td><%=student.branch%></td>
       <td><%=student.batch%></td>
       <td><%=student.contact%></td>
-           
+
       <% if student_logged_in? && current_student.enrollnumber == student.enrollnumber%>
         <td> <%= link_to 'Smart-ID(Student)', user_path(student), class: "btn btn-primary" %></td>
     <% elsif admin_logged_in?%>
