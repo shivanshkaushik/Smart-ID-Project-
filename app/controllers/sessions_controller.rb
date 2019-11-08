@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         flash[:success] = "You have successfully logged in"
         redirect_to student_path(student)
       else
-        flash.now[:error] = 'Please activate your account by following the
+        flash.now[:danger] = 'Please activate your account by following the
         instructions in the account confirmation email you received to proceed'
         render 'new'
       end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'teacher', to: 'faculties#index'
   get 'management', to: 'welcome#adminportal'
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :new, :create, :edit, :update]
 
   resources :students
 
