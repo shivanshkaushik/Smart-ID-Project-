@@ -1,5 +1,4 @@
 class Student < ApplicationRecord
-  has_one :smartid
   before_create :confirmation_token
   before_save {self.email = email.downcase}
 

@@ -23,7 +23,7 @@
       <th>Dues</th>
     </tr>
     <tr style = "border: 1px solid black">
-      <td><%= @id.user_id%></td>
+      <td><%= @id.registration_number.to_s.rjust(11,'0')%></td>
       <td><%= @id.balance%></td>
       <td><%= @id.last_transaction%></td>
       <td><%= @id.dues%></td>
