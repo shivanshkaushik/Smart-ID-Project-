@@ -1,24 +1,26 @@
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-.logo{
-    font-size: 1.7em;
-    float: left;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    font-weight: bold;
+.logo {
+  font-size: 1.7em;
+  float: left;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
-.cent
-{
-    text-align: center;
+.cent {
+  text-align: center;
 }
-.title{
-    font-size: 5em;
-    font-color: #66b3ff;
+.title {
+  font-size: 5em;
+  font-color: #66b3ff;
 }
-.but{
-  margin:auto;
-  display:block;
+.but {
+  margin: auto;
+  display: block;
 }
-.hd{
-     text-align: center;
+.hd {
+  text-align: center;
+}
+li {
+  list-style: none;
 }

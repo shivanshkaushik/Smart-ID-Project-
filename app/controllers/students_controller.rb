@@ -1,6 +1,7 @@
 class StudentsController < ApplicationController
 
   before_action :set_student, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, only: [:edit, :index, :show]
   before_action :require_same_student, only: [:edit, :update, :destroy]
 
   def index
@@ -8,16 +9,27 @@ class StudentsController < ApplicationController
   end
 
   def new
-    @student = Student.new
+    if !logged_in? or admin_logged_in?
+      @student = Student.new
+    else
+      flash[:danger] = "You cannot register as a new student while logged in."
+      redirect_to root_path
+    end
   end
 
   def create
     @student = Student.new(student_params)
     if @student.save
-      # session[:user_id] = @student.id
-      UserMailer.registration_confirmation(@student).deliver
-      flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
-      redirect_to root_path
+      if admin_logged_in?
+        flash[:success] = "New Student has been registered to the Smart-ID Database."
+        redirect_to root_path
+      else
+        session[:student_id] = @student.id
+        #UserMailer.registration_confirmation(@student).deliver
+        #flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
+        flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
+        redirect_to student_path(@student)
+      end
     else
       render 'new'
     end
@@ -31,7 +43,7 @@ class StudentsController < ApplicationController
 
   def update
     if @student.update(student_params)
-      flash[:success] = "Your Profile was updated successfully."
+      flash[:success] = "Student Profile was updated successfully."
       redirect_to student_path(@student)
     else
       render 'edit'
@@ -39,7 +51,7 @@ class StudentsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:student_id] = nil
     @student.destroy
     flash[:danger] = "Student profile was succesfully deleted."
     redirect_to students_path
@@ -69,7 +81,7 @@ class StudentsController < ApplicationController
     end
 
     def require_same_student
-      if current_student.enrollnumber != @student.enrollnumber
+      if current_student != @student and !admin_logged_in?
         flash[:danger] = "You can only edit or update your profile"
         redirect_to root_path
       end

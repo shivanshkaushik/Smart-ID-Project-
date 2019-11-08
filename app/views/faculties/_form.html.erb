@@ -1,12 +1,5 @@
-<% if @faculty.errors.any?%>
-<h2>The following errors prevented the faculty from getting created : </h2>
-<ul>
-  <% @faculty.errors.full_messages.each do |msg|%>
-      <li><%= msg%></li>
-  <% end %>
-</ul>
+<%= render 'shared/errors', obj: @faculty%>
 
-<% end %>
 <div class="jumbotron">
 <%= form_for(@faculty, :html => {class: "horizontal", role: "form"}) do |f| %>
   <div class="form-group">
@@ -51,10 +44,18 @@
   <div class= "control-label">
     <%= f.label :email%>
     </div>
-    <%= f.text_field :email, class: "form-control", placeholder: "Enter Email Address"%>
+    <%= f.email_field :email, class: "form-control", placeholder: "Enter Email Address"%>
   </div>
 
-    <%= f.submit 'Register for Faculty Portal', :class=> 'btn btn-primary but' %>
+<% if !faculty_logged_in? %>
+  <div class= "form-group">
+    <div class= "contrpl-label">
+      <%= f.label :password%>
+    </div>
+    <%= f.password_field :password, class: "form-control", autocomplete: "off"%>
+  </div>
+<% end %>
+    <%= f.submit (@faculty.new_record? ? 'Register for Faculty Portal' : 'Update'), :class=> 'btn btn-primary but' %>
 <% end %>
 
 <%= link_to "Back To Faculties listing", faculties_path%>
