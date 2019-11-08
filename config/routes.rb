@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get 'user', to: 'welcome#studentportal'
   get 'management', to: 'welcome#adminportal'
   get 'teacher', to: 'welcome#facultyportal'
+  get 'user', to: 'students#index'
 
   # get 'user', to: 'users#studentportal'
   get 'teacher', to: 'faculties#index'

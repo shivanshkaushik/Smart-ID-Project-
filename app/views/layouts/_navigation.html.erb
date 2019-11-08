@@ -41,6 +41,8 @@
             <%= link_to 'View Your profile', faculty_path(current_faculty), class: "dropdown-item" %>
             <%= link_to "Logout", faculty_logout_path, method: :delete, class: "dropdown-item" %>
           <% else %>
+            <%= link_to 'New student', new_student_path, class: "dropdown-item"%>
+            <%= link_to 'New Faculty', new_faculty_path, class: "dropdown-item"%>
             <%= link_to "Logout (Admin)", admin_logout_path, method: :delete, class: "dropdown-item" %>
           <% end %> 
         </div> 
