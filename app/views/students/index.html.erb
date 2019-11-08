@@ -9,22 +9,24 @@
 <%= link_to 'Register for Smart-ID', new_student_path, class: "hd" %>
 </div>
 <% end %>
-<table>
+<table class="table">
+  <tbody>
   <% @students.each do |student| %>
     <tr>
-      <td><%= gravatar_for student, size: 100 %></td>
+      <td><%= link_to (gravatar_for student), student_path(student) %></td>
       <td><%=student.enrollnumber.to_s.rjust(11,'0')%></td>
-      <td><%=student.firstname%></td>
-      <td><%=student.lastname%></td>
+      <td><%=student.firstname+" "+student.lastname%></td>
       <td><%=student.branch%></td>
       <td><%=student.batch%></td>
       <td><%=student.contact%></td>
-            <td><%=link_to 'Show', student_path(student), class: "btn btn-primary"%></td>
-      <% if logged_in? && current_student.enrollnumber == student.enrollnumber%>
-        <td><%=link_to 'Edit', edit_student_path(student), class: "btn btn-secondary"%></td>
-        <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
+           
+      <% if student_logged_in? && current_student.enrollnumber == student.enrollnumber%>
         <td> <%= link_to 'Smart-ID(Student)', user_path(student), class: "btn btn-primary" %></td>
-      <% end %>
+    <% elsif admin_logged_in?%>
+    <td><%= link_to "Edit", edit_student_path(student), class: "btn btn-primary"%></td>
+    <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
     </tr>
   <% end %>
+  <% end %>
+  </tbody>
 </table>

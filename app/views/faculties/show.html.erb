@@ -1,20 +1,23 @@
 <h1 align="center">
   <%= @faculty.designation+" "+@faculty.firstname+" "+@faculty.lastname%>'s Profile
-</h1>
+</h1><br>
+<div id="box-container">
+    <div id="box-1">
 <h2 align="center"><%= gravatar_for @faculty , size: 150%></h2>
-<div class="container">
-  <div align="center">
-    <p>NAME: <%= @faculty.firstname+" "+@faculty.lastname%></p>
-    <p>Specialisation: <%= @faculty.teaching_field%></p>
-    <p>Designation: <%= @faculty.designation%></p>
-    <p>E-mail: <%= @faculty.email%></p>
-    <p>Contact: <%= @faculty.contact%></p>
-
+</div>
+  <div id="box-2">
+    <table class="table">
+    <tr><th>NAME</th><td><%= @faculty.firstname+" "+@faculty.lastname%></td></tr>
+    <tr><th>Specialisation</th><td> <%= @faculty.teaching_field%></td></tr>
+    <tr><th>Designation</th><td> <%= @faculty.designation%></td></tr>
+    <tr><th>E-mail</th><td> <%= @faculty.email%></td></tr>
+    <tr><th>Contact</th><td> <%= @faculty.contact%></td></tr>
+</table>
+</div>
+</div>
+<div class="tabs">
 
     <%= link_to "Delete", faculty_path(@faculty), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger", align: "center" if admin_logged_in?%> 
     <%= link_to "Edit", edit_faculty_path(@faculty), class: "btn btn-secondary" if admin_logged_in?%>
-    <br/>
-    <br/>
     <%= link_to "Faculties", faculties_path, class: "btn btn-primary", align: "center"%>
-  </div>
 </div>

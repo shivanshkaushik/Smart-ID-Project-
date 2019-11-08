@@ -24,3 +24,15 @@
 li {
   list-style: none;
 }
+.tabs
+{
+  text-align:center;
+}
+#box-container{
+  display: flex;
+  justify-content:center;
+}
+.roll{
+  position: relative;
+  left:28px;
+}

@@ -1,23 +1,5 @@
 <nav class="navbar navbar-light bg-light">
   <%= link_to "Smart-ID", root_path, class: "navbar-brand logo" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Portal
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'Student', students_path, class: "dropdown-item" %>
-        <%= link_to 'Faculty', teacher_path, class: "dropdown-item" %>
-          <div class="dropdown-divider"></div>
-          <%= link_to 'Admin', management_path, class: "dropdown-item" %>
-        </div>
-      </li>
-    </ul>
 
     <% if logged_in? %>
     <ul class="navbar-nav mr-auto">
@@ -35,17 +17,27 @@
           <% if student_logged_in? %>
             <%= link_to 'Edit Your Profile', edit_student_path(current_student), class: "dropdown-item" %>
             <%= link_to 'View Your profile', student_path(current_student), class: "dropdown-item" %>
-            <%= link_to "Logout", student_logout_path, method: :delete, class: "dropdown-item" %>
           <% elsif faculty_logged_in? %>
             <%= link_to 'Edit Your Profile', edit_faculty_path(current_faculty), class: "dropdown-item" %>
             <%= link_to 'View Your profile', faculty_path(current_faculty), class: "dropdown-item" %>
-            <%= link_to "Logout", faculty_logout_path, method: :delete, class: "dropdown-item" %>
-          <% else %>
-            <%= link_to "Logout (Admin)", admin_logout_path, method: :delete, class: "dropdown-item" %>
+           <% else %>
+            <%= link_to 'New student', new_student_path, class: "dropdown-item"%>
+            <%= link_to 'New Faculty', new_faculty_path, class: "dropdown-item"%>
           <% end %>
         </div>
       </li>
     </ul>
+    <ul class="navbar-nav navbar-right">
+      <li class="nav-item active">
+    <% if student_logged_in? %>
+    <em> <%= link_to "Logout", student_logout_path, method: :delete, class: "nav-link" %>
+    <% elsif faculty_logged_in? %>
+     <em><%= link_to "Logout", faculty_logout_path, method: :delete, class: "nav-link" %>
+    <% else %>
+     <em><%= link_to "Logout", admin_logout_path, method: :delete, class: "nav-link" %>
+       <% end %>
+      </li>
+      </ul>
     <% end %>
   </div>
 </nav>
