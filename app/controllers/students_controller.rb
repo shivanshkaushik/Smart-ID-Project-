@@ -1,5 +1,4 @@
 class StudentsController < ApplicationController
-
   before_action :set_student, only: [:edit, :update, :show, :destroy]
   before_action :require_user, only: [:edit, :index, :show]
   before_action :require_same_student, only: [:edit, :update, :destroy]
@@ -65,7 +64,7 @@ class StudentsController < ApplicationController
       Please sign in to continue."
       redirect_to login_path
     else
-      flash[:error] = "Sorry. User does not exist"
+      flash[:danger] = "Sorry. User does not exist"
       redirect_to root_path
     end
   end
