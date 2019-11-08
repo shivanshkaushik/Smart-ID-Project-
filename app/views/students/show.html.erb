@@ -1,21 +1,24 @@
 <h1 align="center">
   <%= @student.firstname+" "+@student.lastname%>'s Profile
-</h1>
-<div class="container">
-  <h2 align="center"><%= gravatar_for @student , size: 150%></h2> 
-  <b><p align='center'><%= @student.enrollnumber%></p></b>
-  <div align="center">
-    <p>NAME: <%= @student.firstname+" "+@student.lastname%></p>
-    <p>Branch: <%= @student.branch%></p>
-    <p>Batch: <%= @student.batch%></p>
-    <p>Contact: <%= @student.contact%></p>
-
-    <% if admin_logged_in?%>
-    <%= link_to "Delete", student_path(@student), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger", align: "center"  %> 
-    <%= link_to "Edit", edit_student_path(@student), class: "btn btn-secondary" %>
-    <% end %>
-    <br/>
-    <br/>
-    <%= link_to "Students", students_path, class: "btn btn-primary", align: "center"%>
+</h1><br>
+<div id="box-container">
+    <div id="box-1">
+  <h2><%= gravatar_for @student , size: 150%></h2> 
+  <div class="roll"><b><%= @student.enrollnumber%></b></div>
   </div>
+  <div id="box-2">
+    <table class="table">
+    <tr><th>NAME</th> <td><%= @student.firstname+" "+@student.lastname%></td></tr>
+    <tr><th>Branch</th> <td> <%= @student.branch%></td></tr>
+    <tr><th>Batch</th> <td> <%= @student.batch%></td></tr>
+  <tr><th>Contact</th> <td> <%= @student.contact%></td></tr>
+</table>
+</div>
+</div>
+<div class="tabs">
+   <%= link_to "Students", students_path, class: "btn btn-primary", align: "center" %>
+    <% if admin_logged_in?%>
+    <%= link_to "Edit", edit_student_path(@student), class: "btn btn-secondary" %>
+    <%= link_to "Delete", student_path(@student), method: :delete, data: {confirm: "Are you sure?"},class: "btn btn-danger", align: "center"  %> 
+    <% end %>
 </div>

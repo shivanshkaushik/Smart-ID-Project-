@@ -4,13 +4,19 @@
   <tr>
     <th scope="col"> </th>
     <th scope="col">Name</th>
+    <th scope="col">Designation</th>
+    <th scope="col">Specification</th>
+    <th scope="col">Email</th>
   </tr>
   </thead>
   <tbody>
   <% @faculties.each do |f| %>
   <tr>
     <td><%= link_to (gravatar_for f), faculty_path(f)%></td>
-    <td><%= link_to (f.firstname+" "+f.lastname), faculty_path(f)%></td>
+    <td><%= f.firstname+" "+f.lastname%></td>
+    <td><%= f.teaching_field %></td>
+    <td><%= f.designation %></td>
+    <td><%= f.email %></td>
     <% if admin_logged_in?%>
     <td><%= link_to "Edit", edit_faculty_path(f), class: "btn btn-primary"%></td>
     <td><%=link_to 'Delete', faculty_path(f), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
