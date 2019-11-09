@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_user
   before_action :set_student, only: [:show]
+  before_action :check_smart_id_registration_new_account, only: [:new]
   before_action :check_smart_id_registration, only: [:show]
   before_action :require_same_student, only: [:show]
 
@@ -28,6 +29,9 @@ class UsersController < ApplicationController
     @id = Smartid.find_by(:student_id => Student.find(params[:id]))
   end
 
+  def index
+
+  end
 
   private
 
@@ -46,9 +50,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_smart_id_registration_new_account
+    @temp_student = Student.find(session[:student_id])
+    if Smartid.find_by(:registration_number => @temp_student.enrollnumber)
+      flash[:danger] = "Only Admins can perform that action"
+      redirect_to root_path
+    end
+  end
+
   def check_smart_id_registration
-    if Smartid.find_by(:student_id => @student.id)
-      flash.now[:success] = "Welcome #{@student.firstname}, to your Smart-ID portal"
+    @temp_student = Student.find(session[:student_id])
+    if Smartid.find_by(:registration_number => @temp_student.enrollnumber)
+      flash.now[:success] = "Welcome #{@temp_student.firstname}, to your Smart-ID portal"
     else
       flash[:danger] = "You are not registered for Smart-ID. Please register yourselves to access the portal."
       redirect_to students_path
