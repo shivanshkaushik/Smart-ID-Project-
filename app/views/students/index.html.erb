@@ -5,7 +5,7 @@
   <% if Smartid.find_by(:registration_number => (Student.find(session[:student_id])).enrollnumber) %>
     <%= link_to 'Proceed to Smart-ID portal'%>
   <% else %>
-    <%= link_to 'Register for Smart-ID', new_student_path, class: "hd" %>
+    <%= link_to 'Register for Smart-ID(Card Issue)', new_user_path, class: "hd" %>
   <% end %>
 </div>
 <% else %>

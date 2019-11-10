@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @id.student_id = @student.id
     if @id.save
       flash[:success] = "Welcome #{@student.firstname}, you have succesfully registered for Smart-ID Card. Contact Administration department for details."
-      redirect_to user_path(@student)
+      redirect_to students_path
     else
       render 'new'
     end
