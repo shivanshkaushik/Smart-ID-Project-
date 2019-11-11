@@ -18,7 +18,7 @@ class Student < ApplicationRecord
             length: {maximum: 50}
   validates :batch, presence: true,
             format: {with: NUMBER_REGEX, message: "Only numbers should be entered in the specified field"}
-            
+
   validates :contact, presence: true,
             length: {is: 10},
             uniqueness: true,
