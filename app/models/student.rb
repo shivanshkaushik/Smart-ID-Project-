@@ -12,8 +12,7 @@ class Student < ApplicationRecord
             length: {minimum:4, maximum:30},
             uniqueness: {case_sensitive: false}
   validates :lastname, presence: true,
-            length: {minimum:4, maximum:30},
-            uniqueness: {case_sensitive: false}
+            length: {minimum:4, maximum:30}
   validates :branch, presence: true,
             length: {maximum: 50}
   validates :batch, presence: true,
