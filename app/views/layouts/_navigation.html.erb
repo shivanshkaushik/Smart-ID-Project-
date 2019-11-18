@@ -24,7 +24,7 @@
            <% else %>
             <%= link_to 'New student', new_student_path, class: "dropdown-item"%>
             <%= link_to 'New Faculty', new_faculty_path, class: "dropdown-item"%>
-            <%= link_to "Logout", faculty_logout_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to 'Requests for card issue', requests_path, class: "dropdown-item"%>
           <% end %>
         </div>
       </li>
@@ -32,14 +32,13 @@
     <ul class="navbar-nav navbar-right">
       <li class="nav-item active">
     <% if student_logged_in? %>
-    <em> <%= link_to "Logout", student_logout_path, method: :delete, class: "nav-link" %>
+    <em> <%= link_to "Logout", student_logout_path, method: :delete, class: "nav-link" %></em>
     <% elsif faculty_logged_in? %>
-     <em><%= link_to "Logout", faculty_logout_path, method: :delete, class: "nav-link" %>
+     <em><%= link_to "Logout", faculty_logout_path, method: :delete, class: "nav-link" %></em>
     <% else %>
-     <em><%= link_to "Logout", admin_logout_path, method: :delete, class: "nav-link" %>
+     <em><%= link_to "Logout", admin_logout_path, method: :delete, class: "nav-link" %></em>
        <% end %>
       </li>
       </ul>
     <% end %>
-  </div>
 </nav>

@@ -36,4 +36,7 @@ Rails.application.routes.draw do
   delete 'admin_logout', to: 'admin_sessions#destroy'
 
   resources :faculties
+
+  get 'request_confirmation', to: 'requests#show'
+  get 'requests', to: 'requests#index'
 end
