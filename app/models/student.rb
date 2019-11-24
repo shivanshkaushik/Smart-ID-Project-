@@ -12,13 +12,12 @@ class Student < ApplicationRecord
             length: {minimum:4, maximum:30},
             uniqueness: {case_sensitive: false}
   validates :lastname, presence: true,
-            length: {minimum:4, maximum:30},
-            uniqueness: {case_sensitive: false}
+            length: {minimum:4, maximum:30}
   validates :branch, presence: true,
             length: {maximum: 50}
   validates :batch, presence: true,
             format: {with: NUMBER_REGEX, message: "Only numbers should be entered in the specified field"}
-            
+
   validates :contact, presence: true,
             length: {is: 10},
             uniqueness: true,

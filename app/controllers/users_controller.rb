@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   before_action :require_user
   before_action :set_student, only: [:show]
-#  before_action :check_smart_id_registration_new_account, only: [:new]
+  # before_action :check_smart_id_registration_new_account, only: [:new]
+  before_action :check_smart_id_registration_admin_privileges, only: [:new, :create, :edit, :update, :index]
   before_action :check_smart_id_registration, only: [:show]
   before_action :require_same_student, only: [:show]
 
@@ -25,6 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+
+  end
 
   def show
     redirect_to root_path if !logged_in?
@@ -52,7 +56,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def check_smart_id_registration_new_account
+  def check_smart_id_registration_admin_privileges
     @temp_student = Student.find(session[:student_id])
     if Smartid.find_by(:registration_number => @temp_student.enrollnumber)
       flash[:danger] = "Only Admins can perform that action"

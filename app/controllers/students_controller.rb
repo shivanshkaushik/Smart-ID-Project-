@@ -1,4 +1,6 @@
 class StudentsController < ApplicationController
+
+  require 'resolv-replace'
   before_action :set_student, only: [:edit, :update, :show, :destroy]
   before_action :require_user, only: [:edit, :index, :show]
   before_action :require_same_student, only: [:edit, :update, :destroy]
