@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_154215) do
+ActiveRecord::Schema.define(version: 2019_11_24_075241) do
 
   create_table "admins", force: :cascade do |t|
     t.string "firstname"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2019_11_18_154215) do
     t.string "password_digest"
     t.boolean "email_confirmed", default: false
     t.string "confirm_token"
-    t.integer "request_id"
   end
 
 end
