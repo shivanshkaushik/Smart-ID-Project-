@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_user
   before_action :set_student, only: [:show]
+  # before_action :check_smart_id_registration_new_account, only: [:new]
   before_action :check_smart_id_registration_admin_privileges, only: [:new, :create, :edit, :update, :index]
   before_action :check_smart_id_registration, only: [:show]
   before_action :require_same_student, only: [:show]
@@ -13,10 +14,12 @@ class UsersController < ApplicationController
 
   def create
     @id = Smartid.new(smart_id_params)
-    @student = Student.find_by(enrollnumber: params[:smartid][:registration_number].to_i)
+    @student = Student.find_by(enrollnumber: params[:smartid][:registration_number])
+    @student.request_id = nil
     @id.student_id = @student.id
     if @id.save
-      flash[:success] = "Welcome #{@student.firstname}, you have succesfully registered for Smart-ID Card. Contact Administration department for details."
+      @student.save
+      flash[:success] = "The Student has been succesfully registered for Smart-ID Card."
       redirect_to students_path
     else
       render 'new'
@@ -66,7 +69,7 @@ class UsersController < ApplicationController
     if Smartid.find_by(:registration_number => @temp_student.enrollnumber)
       flash.now[:success] = "Welcome #{@temp_student.firstname}, to your Smart-ID portal"
     else
-      flash[:danger] = "You are not registered for Smart-ID. Please register yourselves to access the portal."
+      flash[:danger] = "The request hasn't been processed by the admin. Please try after some time."
       redirect_to students_path
     end
   end

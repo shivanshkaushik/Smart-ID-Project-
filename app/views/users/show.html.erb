@@ -6,27 +6,12 @@
 </div>
 <br> <br>
 <div align = "center">
-<p><strong>Details</strong></p>
-<p>Firstname:<%= @student.firstname%></p>
-<p>Lastname:<%= @student.lastname%></p>
-<p>Branch: <%= @student.branch%></p>
-<p>Batch: <%= @student.batch%></p>
-</div>
-
-<div align = "center">
-  <p><strong>Smart-ID Data</strong></p>
-  <table style = "border: 1px solid black">
+  <table style = "border: 1px solid black" class="table">
     <tr style = "border: 1px solid black">
-      <th>User ID</th>
-      <th>Balance</th>
-      <th>Last Transaction</th>
-      <th>Dues</th>
-    </tr>
-    <tr style = "border: 1px solid black">
-      <td><%= @id.registration_number.to_s.rjust(11,'0')%></td>
-      <td><%= @id.balance%></td>
-      <td><%= @id.last_transaction%></td>
-      <td><%= @id.dues%></td>
+      <th>User ID</th><td><%= @id.registration_number.to_s.rjust(11,'0')%></td></tr>
+      <tr style = "border: 1px solid black"><th>Balance</th><td><%= @id.balance%></td></tr>
+      <tr style = "border: 1px solid black"><th>Last Transaction</th><td><%= @id.last_transaction%></td></tr>
+    <tr style = "border: 1px solid black">  <th>Dues</th><td><%= @id.dues%></td>
     </tr>
   </table>
 </div>
