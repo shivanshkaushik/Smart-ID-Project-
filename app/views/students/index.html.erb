@@ -11,6 +11,7 @@
 <table class="table">
   <tbody>
   <% @students.each do |student| %>
+   <% if student_logged_in? && current_student.enrollnumber == student.enrollnumber%>
     <tr>
       <td><%= link_to (gravatar_for student), student_path(student) %></td>
       <td><%=student.enrollnumber.to_s.rjust(11,'0')%></td>
@@ -19,9 +20,14 @@
       <td><%=student.batch%></td>
       <td><%=student.contact%></td>
 
-      <% if student_logged_in? && current_student.enrollnumber == student.enrollnumber%>
         <td> <%= link_to 'Smart-ID(Student)', user_path(student), class: "btn btn-primary" %></td>
     <% elsif admin_logged_in?%>
+       <td><%= link_to (gravatar_for student), student_path(student) %></td>
+      <td><%=student.enrollnumber.to_s.rjust(11,'0')%></td>
+      <td><%=student.firstname+" "+student.lastname%></td>
+      <td><%=student.branch%></td>
+      <td><%=student.batch%></td>
+      <td><%=student.contact%></td>
     <td><%= link_to "Edit", edit_student_path(student), class: "btn btn-primary"%></td>
     <td><%=link_to 'Delete', student_path(student), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%></td>
     <td><%= link_to 'Requests', '#'%></td>
