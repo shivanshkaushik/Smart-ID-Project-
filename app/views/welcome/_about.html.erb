@@ -1,0 +1,41 @@
+<!-- Header -->
+<header class="text-center">
+  <br>
+</header>
+      <div class="card border-0 shadow">
+       <img src="https://img.collegepravesh.com/2017/02/BPIT-Delhi.jpg" height="300" class="card-img-top" alt="...">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">
+Smart-ID is a campus-wide project, prepared by students of Bhagwan Parshuram Institute ofTechnology
+to facilitate and aid students as well as faculty members in their day to day life on campus.
+It's Primary aim is to digitize all sorts of transactions made inside the campus and reduce the burden on students to carry
+ cash etc. Students won't even need to carry other documents like College ID Card, Library Card etc. as one Smart-ID will be enough.
+ </div>
+ </div>
+ <br><br>
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+    <!-- Team Member 1 -->
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+               <div class="card-body text-center">
+          <h5 class="card-title mb-0">Are you a Student?</h5>
+          <div class="card-text text-black-50">Then get yourself <%= link_to "registered with the Student Portal", new_student_path %>. If you already have an account then <%= link_to "login to the student portal", student_login_path %>, click on 'register for Smart-ID' and provide your Enrolment Number. Soon you'll get your Smart-ID Card and your Smart-ID portal will be enabled.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Team Member 2 -->
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-0 shadow">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-0">Are you a Faculty Member?
+</h5>
+          <div class="card-text text-black-50">Then get yourself <%= link_to "registered with the Faculty Portal", new_faculty_path %>. Once registered, <%= link_to "login to the faculty portal", faculty_login_path %> and click on 'register for Smart-ID', provide your Details and once the adminstrator processes your request, a Smart-ID Card will be issued to you. Now you can add money to your Smart-ID Wallet, view your balance and transaction history on the Smart-ID Portal.</div>
+        </div>
+      </div>
+    </div>
+  <!-- /.row -->
+</div>
+</div>
+<!-- /.container -->
