@@ -1,0 +1,15 @@
+<h1 align = "center">Registration for Issue of Smart-ID</h1>
+
+<%= render 'shared/errors', obj: @id %>
+
+<%= form_for(@id, :url => {:action => "create"}, :html => {class: "horizontal", role: "form"}) do |f| %>
+<div class= "form-group">
+  <div class= "control-label">
+    <%= f.label :"Registration Number(Enrollment number/SSN/Admin-ID)"%>
+    </div>
+
+    <%= f.text_field :registration_number, class: "form-control", placeholder: "Enter a valid registration number", autofocus: true %>
+</div>
+
+    <%= f.submit "Register" , class: "btn btn-primary"%>
+<% end %>

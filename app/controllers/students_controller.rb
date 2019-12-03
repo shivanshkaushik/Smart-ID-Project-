@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
 
+  require 'resolv-replace'
   before_action :set_student, only: [:edit, :update, :show, :destroy]
   before_action :require_user, only: [:edit, :index, :show]
   before_action :require_same_student, only: [:edit, :update, :destroy]
@@ -24,11 +25,11 @@ class StudentsController < ApplicationController
         flash[:success] = "New Student has been registered to the Smart-ID Database."
         redirect_to root_path
       else
-        session[:student_id] = @student.id
-        #UserMailer.registration_confirmation(@student).deliver
-        #flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
-        flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
-        redirect_to student_path(@student)
+        # session[:student_id] = @student.id
+        UserMailer.registration_confirmation(@student).deliver
+        flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
+        # flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
+        redirect_to root_path
       end
     else
       render 'new'
@@ -63,9 +64,9 @@ class StudentsController < ApplicationController
       student.email_activate
       flash[:success] = "Welcome to the Student Portal! Your email has been confirmed.
       Please sign in to continue."
-      redirect_to login_path
+      redirect_to student_login_path
     else
-      flash[:error] = "Sorry. User does not exist"
+      flash[:danger] = "Sorry. User does not exist"
       redirect_to root_path
     end
   end

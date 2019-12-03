@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # get 'user', to: 'welcome#studentportal'
   get 'management', to: 'welcome#adminportal'
   get 'teacher', to: 'welcome#facultyportal'
-  get 'user', to: 'students#index'
+  # get 'user', to: 'students#index'
 
   # get 'user', to: 'users#studentportal'
   # get 'teacher', to: 'faculties#index'
@@ -36,4 +36,7 @@ Rails.application.routes.draw do
   delete 'admin_logout', to: 'admin_sessions#destroy'
 
   resources :faculties
+
+  get 'request_confirmation', to: 'requests#show'
+  get 'requests', to: 'requests#index'
 end
