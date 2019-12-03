@@ -1,5 +1,5 @@
 <div class="container">
-<h1 align="center"> All Students registered for Smart-ID</h1>
+<h2 class="head2"> All Students registered for Smart-ID</h2>
 <% if student_logged_in? %>
 <div class="hd">
   <% if !(Smartid.find_by(:registration_number => (Student.find(session[:student_id])).enrollnumber)) %>

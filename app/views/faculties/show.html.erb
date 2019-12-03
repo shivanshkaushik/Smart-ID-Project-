@@ -1,6 +1,6 @@
-<h1 align="center">
+<h2 class="head2">
   <%= @faculty.designation+" "+@faculty.firstname+" "+@faculty.lastname%>'s Profile
-</h1><br>
+</h2><br>
 <div id="box-container">
     <div id="box-1">
 <h2 align="center"><%= gravatar_for @faculty , size: 150%></h2>
@@ -21,3 +21,4 @@
     <%= link_to "Edit", edit_faculty_path(@faculty), class: "btn btn-secondary" if admin_logged_in?%>
     <%= link_to "Faculties", faculties_path, class: "btn btn-primary", align: "center"%>
 </div>
+<br><br><br><br><br><p></p> dfsf</p>
