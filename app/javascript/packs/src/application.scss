@@ -1,32 +1,28 @@
 @import "~bootstrap/scss/bootstrap";
 
-.logo {
+.logo {                             //navbar logo
   font-size: 1.7em;
   float: left;
   text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
 }
-.cent {
+.cent {                             //center align elements
   text-align: center;
   padding: 70px 0;
 }
 
-.but {
-  margin: auto;
-  display: block;
-}
-.hd {
+.hd {                //center align text
   text-align: center;
 }
 li {
   list-style: none;
 }
-.tabs
+.tabs            //center align buttons on show profile
 {
   text-align:center;
 }
-#box-container{
+#box-container{            
   display: flex;
   justify-content:center;
 }
@@ -50,13 +46,13 @@ li {
 .container{
   background: white;
 }
-.carousel-caption {
+.carousel-caption {           //move all carousel caption up
  margin-bottom:270px;
 }
 .cap{
   margin-bottom:30px;
 }
-.carry{opacity: 0.7;}
+.carry{opacity: 0.7;}           //img opacity of carousel
 
 .aboutt{
   text-align: center;
@@ -74,33 +70,33 @@ header {
 	width: 100%;
 }
 
-h1 {
+h1 {                                  //customize main heading on homepage
 	font-size: calc(2.8em + 2.6vw);
 	font-weight: 700;
 	letter-spacing: .01em;
 	padding: 5rem 0 0 4.5rem;
 	text-shadow: .022em .022em .022em #111;
 	color: #000;
-	text-align: center;
+	text-align: center;             //center align headings
 }
-.head2{
+.head2{                             //customize webpage headings
   	font-size: calc(2.0em + 1.8vw);
 	font-weight: 700;
 	letter-spacing: .01em;
 	text-shadow: .022em .022em .022em #111;
 	color: #000;
-	text-align: center;
+	text-align: center;        //center align headings
 }
-.carousel-inner{
+.carousel-inner{          //carousel height
        height: 450px;
     }
-.c2{
-   margin-bottom:350px;
+.c2{                        //move carousel 2 caption up
+   margin-bottom:350px;      
 }
-.c3{
+.c3{                       //move carousel 3 caption up
   margin-bottom:150px;
 }
-.button {
+.button {                  //carousel next prev button
   border-radius: 4px;
   background-color: #f4511e;
   border: none;
@@ -113,7 +109,7 @@ h1 {
   cursor: pointer;
   margin: 5px;
 }
-h2{
+h2{                         //black colour to h2 headings and carousel captions 
   color: #000000;
 }
 .button span {
