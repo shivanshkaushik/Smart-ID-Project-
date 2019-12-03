@@ -5,7 +5,7 @@ class FacultiesController < ApplicationController
   before_action :require_same_faculty, only: [:edit, :update, :destroy]
 
   def index
-    @faculties = Faculty.all
+    @faculties = Faculty.paginate(:page => params[:page], per_page: 5)
   end
 
   def new

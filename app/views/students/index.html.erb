@@ -1,3 +1,4 @@
+<div class="container">
 <h1 align="center"> All Students registered for Smart-ID</h1>
 <% if student_logged_in? %>
 <div class="hd">
@@ -29,3 +30,5 @@
   <% end %>
   </tbody>
 </table>
+<%= will_paginate @students, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

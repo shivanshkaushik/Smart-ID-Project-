@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   before_action :require_same_student, only: [:edit, :update, :destroy]
 
   def index
-    @students = Student.all
+    @students = Student.paginate(:page => params[:page], per_page: 5)
   end
 
   def new
@@ -25,11 +25,11 @@ class StudentsController < ApplicationController
         flash[:success] = "New Student has been registered to the Smart-ID Database."
         redirect_to root_path
       else
-        # session[:student_id] = @student.id
-        UserMailer.registration_confirmation(@student).deliver
-        flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
-        # flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
-        redirect_to root_path
+         session[:student_id] = @student.id
+        # UserMailer.registration_confirmation(@student).deliver
+      #  flash[:primary] = "Hi #{@student.firstname}, An email has been sent to your registered email-id. Confirm your email to continue"
+         flash[:success] = "Welcome #{@student.firstname + " " + @student.lastname} to the portal"
+        redirect_to students_path
       end
     else
       render 'new'
