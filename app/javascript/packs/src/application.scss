@@ -91,7 +91,7 @@ h1 {                                  //customize main heading on homepage
        height: 450px;
     }
 .c2{                        //move carousel 2 caption up
-   margin-bottom:350px;      
+   margin-bottom:300px;      
 }
 .c3{                       //move carousel 3 caption up
   margin-bottom:150px;
@@ -135,4 +135,7 @@ h2{                         //black colour to h2 headings and carousel captions
 .button:hover span:after {
   opacity: 1;
   right: 0;
+}
+.c1{
+  margin-bottom: 250px;
 }
